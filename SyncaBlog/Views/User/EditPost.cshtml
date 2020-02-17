@@ -1,0 +1,73 @@
+﻿@model SyncaBlog.Models.PostEditModel
+
+@{
+    ViewBag.Title = "EditPost";
+}
+
+<h2>Изминение статьи</h2>
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bd-example-modal-sm">Удалить</button>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.CreationTime)
+        @Html.HiddenFor(model => model.BlogId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "width500" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Text, 10, 150, new { @class = "width500" })
+                @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShortText, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.ShortText, 10, 150, new { @class = "width500" })
+                @Html.ValidationMessageFor(model => model.ShortText, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+                @Html.Label("Выберите тэги для статьи ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.ListBoxFor(model => model.TagSelected, Model.Tags as MultiSelectList, new { @class = "form-control", @multiple = "multiple" })
+
+                </div>
+            </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Изменить" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body"> <h2>Вы точно желаете удалить публикацию?</h2></div>
+            <div class="modal-footer">
+                @Html.ActionLink("Удалить", "DeletePost", "User", new { id = @Model.Id }, new { @class = "btn btn-danger pull-right dopmargin" })       
+                <button type="button" class="btn btn-default" data-dismiss="modal">>Назад</button>
+            </div>
+        </div>
+    </div>
+</div>

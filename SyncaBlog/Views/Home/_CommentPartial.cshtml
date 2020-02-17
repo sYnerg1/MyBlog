@@ -1,0 +1,27 @@
+﻿@model  SyncaBlog.Models.CommentViewModel
+
+    
+<div class="doppadding centrecomment">
+        @foreach (var item in Model.Comments)
+        {
+        <div class="panel panel-primary width500">
+            <div class="panel-body">
+
+                <h5>@item.Description</h5>
+                @if (User.IsInRole("moderator"))
+                {
+                    using (Html.BeginForm("DeleteComment", "User", FormMethod.Post))
+                    {
+                        @Html.Hidden("CommentId", item.Id)
+                        @Html.Hidden("PostId", Model.PostId)
+                        <input type="submit" value="Удалить" class="btn btn-danger pull-right" />
+                    }
+                }
+                </div>
+        </div>
+            } 
+    </div>
+           
+    <div class="btn-group pull-right">
+        @Html.PageLinks(Model.Paging, x => Url.Action("PostDetails", new { id = Model.PostId, page = x }))
+    </div>

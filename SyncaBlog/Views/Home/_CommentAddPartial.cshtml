@@ -1,0 +1,13 @@
+﻿@model SyncaBlog.Models.CommentAddModel
+
+<div class="dopmargin">
+
+    @using (Html.BeginForm("CommentAdd", "Home", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.PostId)
+        @Html.TextAreaFor(model => model.Description, 5, 150, new { @class = "width500", @placeholder = "Введите комментарий" })
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        <input type="submit" value="Добавить комментарий" class="btn btn-default pull-right" />
+    }
+</div>

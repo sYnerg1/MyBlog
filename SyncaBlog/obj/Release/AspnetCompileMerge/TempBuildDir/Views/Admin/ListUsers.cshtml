@@ -1,0 +1,25 @@
+﻿@model IEnumerable<SyncaBlog.Core.Models.User>
+
+@{
+    ViewBag.Title = "ListUsers";
+}
+
+<h2>Список пользователей</h2>
+
+
+
+@section SearchForm {
+    <div id="parameters">
+        <h3>Критерии отбора</h3>
+        @Html.Partial("_SearchAjaxForm")
+    </div>
+}
+
+<table class="table" id="table">
+    <thead>
+        @Html.Partial("_TableHead", @Model)
+    </thead>
+    <tbody id="data">
+        @Html.Partial("_TableBody", @Model)
+    </tbody>
+</table>

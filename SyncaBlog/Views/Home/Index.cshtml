@@ -1,0 +1,53 @@
+﻿@model SyncaBlog.Models.PostViewModel
+@using SyncaBlog.Core.Models;
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Последние записи</h1>
+
+
+@foreach (var item in @Model.Posts)
+{
+    <div class="panelme">
+        <div class="panel-body">
+
+            <h2>@Html.ActionLink(item.Title, "PostDetails", "Home", new { id = item.Id, page = 1 }, new { @class = "font-weight-bold nav-link text-muted" })</h2>
+            <p>@item.CreationTime.ToShortDateString()</p>
+           
+                <div class="p-3 mb-2 bg-secondary text-white">
+                    <p>
+                        @foreach (Tag t in @item.MyTag)
+                        {
+                            @Html.ActionLink(t.Name, "TagDetails", "Home", new { id = t.Id, page = 1 }, new { @class = "badge badge-pill text-white" })
+                        }
+                    </p>
+                </div>
+                <blockquote>
+                    <p class="lead">
+                        @item.ShortText
+                    </p
+                </blockquote>
+                <div class="btn-group pull-right">
+                    @Html.ActionLink("Читать дальше...", "PostDetails", "Home", new { id = item.Id, page = 1 }, new { @class = "btn btn-info pull-right dopmargin" })
+                    @if (User.IsInRole("moderator"))
+                    {
+                        @Html.ActionLink("Модерировать", "EditPost", "User", new { id = item.Id }, new { @class = "btn btn-info pull-right dopmargin" })
+                    }
+
+                </div>
+            </div>
+    </div>
+
+}
+
+
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.Paging, x => Url.Action("Index", new { page = x }))
+</div>
+@section TagMenu
+    {
+    @Html.Action("TagMenuPartial")
+}
+
+

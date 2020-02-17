@@ -1,0 +1,63 @@
+﻿@model SyncaBlog.Models.TagDetailViewModel
+@{
+    ViewBag.Title = "TagDetails";
+}
+
+<h2>Статьи по тэгу:<span class="badge badge-pill"> @Model.TagName </span></h2>
+
+
+@foreach (var item in Model.Posts)
+{
+    @*<h2>@Html.ActionLink(item.Title, "PostDetails", "Home", new { id = item.Id, page = 1 }, new { @class = "font-weight-bold nav-link text-muted" })</h2>
+        <div>
+            <div class="row panel">
+                <div class="col-xs-11">
+                    <blockquote>
+                        <p class="lead">
+                            @item.ShortText
+                        </p>
+                    </blockquote>
+                    @Html.ActionLink("Читать дальше...", "PostDetails", "Home", new { id = item.Id, page = 1 }, new { @class = "btn btn-info pull-right" })
+                </div>
+            </div>
+        </div>*@
+
+
+
+
+    <div class="panelme ">
+        <div class="panel-body">
+
+            <h2>@Html.ActionLink(item.Title, "PostDetails", "Home", new { id = item.Id, page = 1 }, new { @class = "font-weight-bold nav-link text-muted" })</h2>
+            <p>@item.CreationTime.ToShortDateString()</p>           
+            @*<div class="col-xs-11">*@
+            <blockquote>
+                <p class="lead">
+                    @item.ShortText
+                </p>
+                @*@Html.TextAreaFor(Model=>item.ShortText, 3, 40, new {  @readonly = "readonly" })*@
+            </blockquote>
+            <div class="btn-group pull-right">
+                @Html.ActionLink("Читать дальше...", "PostDetails", "Home", new { id = item.Id, page = 1 }, new { @class = "btn btn-info pull-right dopmargin" })
+                @if (User.IsInRole("moderator"))
+                {
+                    @Html.ActionLink("Модерировать", "EditPost", "User", new { id = item.Id }, new { @class = "btn btn-info pull-right dopmargin" })
+                }
+
+            </div>
+        </div>
+    </div>
+
+
+
+}
+<div class="btn-group pull-right">
+    @*@Html.PageLinks(Model.Paging, x => Url.Action("TagDetails", new { id = Model.TagId, page = x }))*@
+    
+</div>
+
+@section TagMenu
+    {
+    @Html.Action("TagMenuPartial",
+         new { TagName = ViewBag.SelectedTagName })
+}

@@ -1,0 +1,25 @@
+﻿@model SyncaBlog.Models.PostDetailViewModel
+@using SyncaBlog.Core.Models
+@using SyncaBlog.Models
+@{
+    ViewBag.Title = "PostDetails";
+}
+
+<h2>@Model.Post.Title</h2>
+
+<p>Блог: @Html.ActionLink(Model.Post.MyBlog.Name, "BlogDetails", new { id = Model.Post.BlogId })</p>
+@foreach (Tag t in Model.Post.MyTag)
+{
+    @Html.ActionLink(t.Name, "TagDetails", "Home", new { id = t.Id, page = 1 }, new { @class = "badge badge-pill text-white" })
+}
+@Html.TextAreaFor(Model => Model.Post.Text, 30, 150, new { @class = "width500", @readonly = "readonly" })
+<h4>Комментарии: </h4>
+@if (Model.Comment.Comments.Count() == 0)
+{
+    <p>Нет комментариев</p>
+}
+
+@Html.Partial("_CommentAddPartial", new CommentAddModel { PostId = Model.Post.Id });
+@Html.Partial("_CommentPartial", Model.Comment)
+
+

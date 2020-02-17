@@ -1,0 +1,15 @@
+﻿@model IEnumerable<SyncaBlog.Core.Models.User>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить роль", "EditRole", new { name = item.Email })
+        </td>
+    </tr>
+}

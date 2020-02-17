@@ -1,0 +1,20 @@
+﻿@model SyncaBlog.Models.PostDetailViewModel
+@{
+    ViewBag.Title = "PostDetails";
+}
+
+<h2>@Model.Post.Title</h2>
+
+<p>Блог: <a href="/Home/BlogDetails/@Model.Post.MyBlog.Id">@Model.Post.MyBlog.Name</a></p>
+
+
+
+@Html.TextAreaFor(Model => Model.Post.Text, 30, 150, new { @class = "width500", @readonly = "readonly" })
+<h4>Комментарии: </h4>
+@if (Model.Comment.Comments.Count() == 0)
+{
+    <p>Нет комментариев</p>
+}
+@Html.Partial("_CommentPartial", Model.Comment)
+
+

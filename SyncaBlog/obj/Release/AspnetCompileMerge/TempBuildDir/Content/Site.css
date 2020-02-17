@@ -1,0 +1,58 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+
+
+.width500 {
+    width: 750px;
+    resize: vertical;
+    height: 100%;
+}
+
+.custon {
+    border-color: #333;
+    margin-bottom: 40px;
+    border-radius: 30px;
+    border: 2px;
+}
+
+.centrecomment{
+    margin-left:auto;
+    margin-right:auto;
+}
+.dopmargin {
+    margin-bottom: 30px;
+}
+.dopmargintop {
+    margin-top: 50px;
+}
+.doppadding {
+    padding-top: 40px;
+}
+
+.marg5 {
+    margin-top: 12px;
+}
+
+.pad35 {
+    padding-left: 35px;
+}
+
+.panelme {
+    margin-bottom: 40px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    border-color: #333;
+}

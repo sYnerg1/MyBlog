@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncaBlog", "SyncaBlog\SyncaBlog.csproj", "{6E8B8B81-22D5-4E64-8186-3CFB0B6F3A94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncaBlog.Core", "SyncaBlog.Core\SyncaBlog.Core.csproj", "{E19CC719-FA00-4EE9-8D72-A133AC401FB3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E8B8B81-22D5-4E64-8186-3CFB0B6F3A94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E8B8B81-22D5-4E64-8186-3CFB0B6F3A94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E8B8B81-22D5-4E64-8186-3CFB0B6F3A94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E8B8B81-22D5-4E64-8186-3CFB0B6F3A94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E19CC719-FA00-4EE9-8D72-A133AC401FB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E19CC719-FA00-4EE9-8D72-A133AC401FB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E19CC719-FA00-4EE9-8D72-A133AC401FB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E19CC719-FA00-4EE9-8D72-A133AC401FB3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EBB1D62A-5099-4F97-8AF2-0AB7B003A99D}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,8 @@
+﻿@using (Html.BeginForm("SearchPosts", "Home",new { page=1}, FormMethod.Get))
+{
+<div class="nav navbar-nav">
+
+    @Html.TextBox("SearchString", "", new { @placeholder = "Текст поиска",@class="marg5"})
+    <input type="submit" value="Искать" class="btn btn-default" />
+</div>
+}

@@ -1,0 +1,33 @@
+﻿@model SyncaBlog.Core.Models.Blog
+@{
+    ViewBag.Title = "BlogDetails";
+}
+    <div class="center-block pad35">
+        <h2>Блог: @Model.Name</h2>
+        <h3>Описание</h3>
+        <h4>@Model.Description</h4>
+        <hr />
+    </div>
+
+        @foreach (var item in Model.MyPost.OrderByDescending(e => e.CreationTime))
+        {
+            <div class="panelme ">
+                <div class="panel-body">
+
+                    <h2>@Html.ActionLink(item.Title, "PostDetails", "Home", new { id = item.Id, page = 1 }, new { @class = "font-weight-bold nav-link text-muted" })</h2>
+                    <p>@item.CreationTime.ToShortDateString()</p>
+
+                    <blockquote>
+                        <p class="lead">
+                            @item.ShortText
+                        </p>
+                    </blockquote>
+                    <div class="btn-group pull-right">
+                        @Html.ActionLink("Читать дальше...", "PostDetails", "Home", new { id = item.Id, page = 1 }, new { @class = "btn btn-info pull-right dopmargin" })
+                    </div>
+                </div>
+            </div>
+
+
+        }
+

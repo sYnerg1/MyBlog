@@ -1,0 +1,18 @@
+﻿
+    @using (Ajax.BeginForm("_SelectData", new AjaxOptions { UpdateTargetId = "data" }))
+    {
+        <p>
+            Логин<br />
+            <input type="text" name="userLogin" />
+        </p>
+        <p>
+            Роль <br />
+            @Html.DropDownList("selUserRole", ViewBag.SelUserRole as SelectList)
+        </p>
+        <p>
+            <input type="submit" value="Найти" />
+        </p>
+
+    }
+
+

@@ -1,0 +1,8 @@
+﻿@model IEnumerable<SyncaBlog.Core.Models.Tag>
+
+        <h2 class="center-block"> Меню тэгов</h2>
+        @foreach (var link in Model)
+        {
+            @Html.ActionLink(link.Name, "TagDetails", new { id = link.Id }, new { @class = "btn btn-block btn-default btn-lg btn-nav_menu" })
+        }
+    
